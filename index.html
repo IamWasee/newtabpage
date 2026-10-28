@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pulse · New Tab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Animated background: two blurred "breathing" orbs + film grain -->
+  <div class="bg" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="grain"></div>
+  </div>
+
+  <main class="shell">
+    <header class="top">
+      <div id="weather" class="weather card" aria-live="polite">Loading weather…</div>
+      <button id="settings-btn" class="icon-btn" type="button" aria-label="Open settings">⚙</button>
+    </header>
+
+    <section class="hero">
+      <p id="greeting" class="greeting"></p>
+      <h1 class="clock" aria-live="off">
+        <span id="hh">--</span><span class="colon">:</span><span id="mm">--</span><small id="ampm"></small>
+      </h1>
+      <svg class="ecg" viewBox="0 0 600 60" aria-hidden="true">
+        <path d="M0 30 H230 L242 30 L252 6 L266 54 L278 18 L288 30 H600" />
+      </svg>
+      <p id="date" class="date"></p>
+
+      <form id="search" class="search" role="search">
+        <input id="search-input" type="search" placeholder="Search or type a URL…  ( / )" autocomplete="off" aria-label="Search">
+      </form>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Quick links</h2>
+        <ul id="links" class="links"></ul>
+        <form id="link-form" class="inline-form">
+          <input name="label" placeholder="Name" maxlength="24" required>
+          <input name="url" placeholder="example.com" required>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Today <span id="todo-count" class="pill"></span></h2>
+        <ul id="todos" class="todos"></ul>
+        <form id="todo-form" class="inline-form">
+          <input name="text" placeholder="Add a task…" maxlength="120" required>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="settings" class="settings">
+    <form method="dialog" id="settings-form">
+      <h2>Settings</h2>
+      <label>Your name <input name="name" maxlength="30" placeholder="Wasee"></label>
+      <label>City for weather <input name="city" maxlength="60" placeholder="Dhaka"></label>
+      <label class="check"><input type="checkbox" name="use24h"> 24-hour clock</label>
+      <div class="actions">
+        <button value="cancel" type="submit" class="ghost">Cancel</button>
+        <button value="save" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
